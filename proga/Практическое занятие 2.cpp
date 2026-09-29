@@ -76,9 +76,12 @@ public:
     }
 
     // Подзадача 5
-    static double TriangleArea(double base, double height)
+   static double TriangleArea(double base, double height)
     {
-        return 0;
+        double value = base * height / 2.0;
+        double rounded = round(value * 100.0)/100.0;
+        cout << "Площадь треугольника через основание и высоту:" << rounded << endl;
+        ret urn rounded;
     }
 };
 
