@@ -1,5 +1,0 @@
-﻿  Circlecalculation.cpp
-C:\Users\stas-\source\repos\Circlecalculation\Circlecalculation\Circlecalculation.cpp(3,17): error C2065: M_PI: необъявленный идентификатор
-C:\Users\stas-\source\repos\Circlecalculation\Circlecalculation\Circlecalculation.cpp(4,19): error C3861: round: идентификатор не найден
-C:\Users\stas-\source\repos\Circlecalculation\Circlecalculation\Circlecalculation.cpp(6,2): error C2065: cout: необъявленный идентификатор
-C:\Users\stas-\source\repos\Circlecalculation\Circlecalculation\Circlecalculation.cpp(6,54): error C2065: endl: необъявленный идентификатор
