@@ -81,7 +81,7 @@ public:
         double value = base * height / 2.0;
         double rounded = round(value * 100.0)/100.0;
         cout << "Площадь треугольника через основание и высоту:" << rounded << endl;
-        ret urn rounded;
+        return rounded;
     }
 };
 
