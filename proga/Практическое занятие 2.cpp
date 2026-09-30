@@ -40,6 +40,17 @@ public:
     }
 
     // Подзадача 4
+    static double TrapezoidArea(double a, double b, double h)
+    {
+        double value = (a + b) * h / 2.0;
+        double rounded = round(value * 100.0) / 100.0;
+
+        cout << "Площадь трапеции: " << rounded << endl;
+
+        return rounded;
+    }
+
+    // Подзадача 5
     static double TriangleArea(double first, double second, double third)
     {
         double p = (first + second + third) / 2.0;
@@ -51,7 +62,7 @@ public:
         return rounded;
     }
 
-    // Подзадача 5
+    // Подзадача 6
     static double TriangleArea(double base, double height)
     {
         double value = base * height / 2.0;
@@ -76,6 +87,7 @@ int main()
 
     Calculator::CircleArea(first);
     Calculator::RectangleArea(first, second);
+    Calculator::TrapezoidArea(first, second, third);
     Calculator::TriangleArea(first, second, third);
     Calculator::TriangleArea(first, second);
 
