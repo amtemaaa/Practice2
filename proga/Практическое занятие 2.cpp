@@ -39,7 +39,6 @@ public:
         return rounded;
     }
 
-
     // Подзадача 4
     static double TriangleArea(double first, double second, double third)
     {
