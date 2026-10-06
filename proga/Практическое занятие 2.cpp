@@ -1,107 +1,189 @@
-﻿#include <iostream> // Используем заголовочный файл потока ввода/вывода
-#include <cmath> // Используем заголовочный файл математических функций
+﻿#include <iostream>
+#include <cmath>
+#include <locale>
 
-#include "Переменные.cpp"
-#include "Консоль.cpp"
+using namespace std;
 
-using namespace std; // Используем стандартную библиотеку
-
-/*
-    Групповое занятие: совместными усилиями реализовать доп. функции калькулятора
-
-    1) Назначьте руководителя проекта
-    Руководитель проекта должен создать репозиторий проекта калькулятора и добавить туда своих напарников.
-    Затем распределите подзадачи на каждого участника.
-
-    2) Каждый участник проекта должен запуллить проект из репозитория себе и создать ветку,
-    назвать её своим ФИО латиницей, выполнить свою подзадачу в ней, после чего создать
-    запрос на слияние ветвей (merge request)
-
-    3) Команда просматривает каждую ветку, оставляет свои комментарии по доработке, если необходимо, затем
-    руководитель проекта производит слияние в мастер-ветку. Итоговый проект должен корректно проводить вычисления
-
-    ПОДЗАДАЧИ:
-
-    1. Доработать int main()
-        1.1 Вывести в консоль указания пользователю для работы с программой
-        1.2 Реализовать ввод трех значений с консоли и хранение этих переменных для других методов
-    2. Описать метод рассчёта площади круга
-    3. Описать метод рассчёта площади прямоугольника
-    4. Описать метод рассчёта площади треугольника по формуле Герона
-    5. Описать метод рассчёта площади треугольника через основание и высоту
-
-    В конце прошу округлять вычисления до двух знаков после запятой, используя
-    double rounded = round(value * 100.0) / 100.0 - вернёт число с двумя знаками после запятой
-    Помимо вычислений, каждый метод должен делать аккуратный вывод результата в консоль
-    */
+class Console
+{
+public:
+	static void SetUnicode()
+	{
+		setlocale(LC_ALL, ".UTF8");
+	}
+};
 
 class Calculator
 {
 public:
 
-    /// <summary>
-    /// Вычисляет сумму двух чисел с плавающей запятой
-    /// </summary>
-    /// <param name="a">Первое значение</param>
-    /// <param name="b">Второе значение</param>
-    /// <returns>Итоговая сумма</returns>
-    static double Sum(double a, double b)
-    {
-        // Вычисляем
-        double sum = a + b;
-        // Округляем
-        double result = round(sum * 100.0) / 100.0;
-        // Выводим в консоль рассчёты
-        cout << "Сумма: " << sum << endl;
+	// Подзадача 2
+	static double CircleArea(double radius)
+	{
+		double value = acos(-1.0) * radius * radius;
+		double rounded = round(value * 100.0) / 100.0;
 
-        return sum;
-    }
+		cout << "Площадь круга: " << rounded << endl;
 
-    // Подзадача 2
-    {
-        double value = M_PI * radius * radius;
-        double rounded = round(value * 100.0) / 100.0;
+		return rounded;
+	}
 
-        cout << "Площадь круга: " << rounded << endl;
+	// Подзадача 3
+	static double RectangleArea(double first, double second)
+	{
+		double value = first * second;
+		double rounded = round(value * 100.0) / 100.0;
 
-        return rounded;
-    }
-    {
-        return 0;
-    }
+		cout << "Площадь прямоугольника: " << rounded << endl;
 
-    // Подзадача 3
-    static double RectangleArea(double first, double second)
-    {
-        return 0;
-    }
+		return rounded;
+	}
 
-    // Подзадача 4
-    static double TriangleArea(double first, double second, double third)
-    {
-        return 0;
-    }
+	// Подзадача 4
+	static double TrapezoidArea(double a, double b, double h)
+	{
+		double value = (a + b) * h / 2.0;
+		double rounded = round(value * 100.0) / 100.0;
 
-    // Подзадача 5
-   static double TriangleArea(double base, double height)
-    {
-        double value = base * height / 2.0;
-        double rounded = round(value * 100.0)/100.0;
-        cout << "Площадь треугольника через основание и высоту:" << rounded << endl;
-        ret urn rounded;
-    }
+		cout << "Площадь трапеции: " << rounded << endl;
+
+		return rounded;
+	}
+
+	// Подзадача 5
+	static double TriangleArea(double first, double second, double third)
+	{
+		double p = (first + second + third) / 2.0;
+		double value = sqrt(p * (p - first) * (p - second) * (p - third));
+		double rounded = round(value * 100.0) / 100.0;
+
+		cout << "Площадь треугольника по формуле Герона: " << rounded << endl;
+
+		return rounded;
+	}
+
+	// Подзадача 6
+	static double TriangleArea(double base, double height)
+	{
+		double value = base * height / 2.0;
+		double rounded = round(value * 100.0) / 100.0;
+
+		cout << "Площадь треугольника через основание и высоту: " << rounded << endl;
+
+		return rounded;
+	}
+	// Подзадача 7
+	static int Factorial(int num)
+	{
+		int result = 1;
+		for (int i = 2; i <= num; i++)
+		{
+			result *= i;
+		}
+		cout << "Факториал числа" << num << "=" << result << endl;
+		return result;
+	}
+
 };
 
 int main()
 {
-    Console::SetRussianOnWindows();
-    // Подзадача 1
+	Console::SetUnicode();
 
-    // Для проверки задания: снять комментарии, заполнить методы переменными, 
-    // запустить и посмотреть консольный вывод
-    Calculator::Sum(3., 5.);
-    // Calculator::CircleArea();
-    // Calculator::RectangleArea();
-    // Calculator::TriangleArea();
-    // Calculator::TriangleArea();
+	cout << "Калькулятор площади " << endl;
+	cout << "Выберите фигуру:" << endl;
+	cout << "1 - Найти площадь круга" << endl;
+	cout << "2 - Найти площадь прямоугольника" << endl;
+	cout << "3 - Найти площадь трапеции" << endl;
+	cout << "4 - Найти площадь треугольника по формуле Герона" << endl;
+	cout << "5 - Найти площадь треугольника через основание и высоту" << endl;
+	cout << "6 - Найти факториал" << endl;
+	cout << "0 - Выход из цикла" << endl;
+	int choice = -1;
+	while (choice != 0)
+	{
+
+		cout << "\nВведите номер формулы(0 - выход из цикла)";
+		cin >> choice;
+		switch (choice)
+
+		{
+		case 1:
+		{
+			double radius;
+			cout << "введите радиус: ";
+			cin >> radius;
+			Calculator::CircleArea(radius);
+			break;
+		}
+		case 2:
+		{
+			double first, second;
+			cout << "Введите первую сторону: ";
+			cin >> first;
+			cout << "Введите вторую сторону: ";
+			cin >> second;
+			Calculator::RectangleArea(first, second);
+			break;
+		}
+		case 3:
+		{
+			double a, b, h;
+			cout << "Введите первое основние: ";
+			cin >> a;
+			cout << "Введите второе основание: ";
+			cin >> b;
+			cout << "Введите высоту: ";
+			cin >> h;
+			Calculator::TrapezoidArea(a, b, h);
+			break;
+		}
+		case 4:
+		{
+			double first, second, third;
+			cout << "Введите первую сторону: ";
+			cin >> first;
+			cout << "введите вторую сторону: ";
+			cin >> second;
+			cout << "Введите третью сторону: ";
+			cin >> third;
+			Calculator::TriangleArea(first, second, third);
+			break;
+		}
+		case 5:
+		{
+			double base, height;
+			cout << "Введите основание: ";
+			cin >> base;
+			cout << "Введите высоту: ";
+			cin >> height;
+			Calculator::TriangleArea(base, height);
+			break;
+		}
+		case 6:
+		{
+			int num;
+			cout << "Введите число:";
+			cin >> num;
+			if (num < 0)
+			{
+				cout << "Факториал определен только для неотрицательных чисел" << endl;
+			}
+			else
+			{
+				Calculator::Factorial(num);
+			}
+			break;
+		}
+		case 0:
+		{
+			cout << "Выход из программы" << endl;
+			break;
+		}
+		default:
+			cout << "Ошибка. Введите число от 0 до 6" << endl;
+			break;
+		}
+	}
+	return 0;
 }
