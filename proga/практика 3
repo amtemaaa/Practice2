@@ -1,0 +1,95 @@
+#include <iostream>
+#include <cmath>
+#include <locale>
+
+using namespace std;
+
+class Console
+{
+public:
+    static void SetUnicode()
+    {
+        setlocale(LC_ALL, ".UTF8");
+    }
+};
+
+class Calculator
+{
+public:
+
+    // Подзадача 2
+    static double CircleArea(double radius)
+    {
+        double value = acos(-1.0) * radius * radius;
+        double rounded = round(value * 100.0) / 100.0;
+
+        cout << "Площадь круга: " << rounded << endl;
+
+        return rounded;
+    }
+
+    // Подзадача 3
+    static double RectangleArea(double first, double second)
+    {
+        double value = first * second;
+        double rounded = round(value * 100.0) / 100.0;
+
+        cout << "Площадь прямоугольника: " << rounded << endl;
+
+        return rounded;
+    }
+
+    // Подзадача 4
+    static double TrapezoidArea(double a, double b, double h)
+    {
+        double value = (a + b) * h / 2.0;
+        double rounded = round(value * 100.0) / 100.0;
+
+        cout << "Площадь трапеции: " << rounded << endl;
+
+        return rounded;
+    }
+
+    // Подзадача 5
+    static double TriangleArea(double first, double second, double third)
+    {
+        double p = (first + second + third) / 2.0;
+        double value = sqrt(p * (p - first) * (p - second) * (p - third));
+        double rounded = round(value * 100.0) / 100.0;
+
+        cout << "Площадь треугольника по формуле Герона: " << rounded << endl;
+
+        return rounded;
+    }
+
+    // Подзадача 6
+    static double TriangleArea(double base, double height)
+    {
+        double value = base * height / 2.0;
+        double rounded = round(value * 100.0) / 100.0;
+
+        cout << "Площадь треугольника через основание и высоту: " << rounded << endl;
+
+        return rounded;
+    }
+};
+
+int main()
+{
+    Console::SetUnicode();
+
+    cout << "Калькулятор площади фигур" << endl;
+
+    double first, second, third;
+
+    cout << "Введите три значения: ";
+    cin >> first >> second >> third;
+
+    Calculator::CircleArea(first);
+    Calculator::RectangleArea(first, second);
+    Calculator::TrapezoidArea(first, second, third);
+    Calculator::TriangleArea(first, second, third);
+    Calculator::TriangleArea(first, second);
+
+    return 0;
+}
