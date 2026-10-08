@@ -72,6 +72,21 @@ public:
 
         return rounded;
     }
+
+    // Новая подзадача
+    static int Factorial(int num)
+    {
+        int result = 1;
+
+        for (int i = 1; i <= num; i++)
+        {
+            result *= i;
+        }
+
+        cout << "Факториал: " << result << endl;
+
+        return result;
+    }
 };
 
 int main()
@@ -80,16 +95,100 @@ int main()
 
     cout << "Калькулятор площади фигур" << endl;
 
-    double first, second, third;
+    int choice = -1;
 
-    cout << "Введите три значения: ";
-    cin >> first >> second >> third;
+    while (choice != 0)
+    {
+        cout << endl;
+        cout << "Выберите действие:" << endl;
+        cout << "1 - Площадь круга" << endl;
+        cout << "2 - Площадь прямоугольника" << endl;
+        cout << "3 - Площадь трапеции" << endl;
+        cout << "4 - Площадь треугольника по формуле Герона" << endl;
+        cout << "5 - Площадь треугольника через основание и высоту" << endl;
+        cout << "6 - Факториал" << endl;
+        cout << "0 - Выход" << endl;
 
-    Calculator::CircleArea(first);
-    Calculator::RectangleArea(first, second);
-    Calculator::TrapezoidArea(first, second, third);
-    Calculator::TriangleArea(first, second, third);
-    Calculator::TriangleArea(first, second);
+        cout << "Введите номер действия: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+        {
+            double radius;
+
+            cout << "Введите радиус: ";
+            cin >> radius;
+
+            Calculator::CircleArea(radius);
+            break;
+        }
+
+        case 2:
+        {
+            double first, second;
+
+            cout << "Введите длину и ширину: ";
+            cin >> first >> second;
+
+            Calculator::RectangleArea(first, second);
+            break;
+        }
+
+        case 3:
+        {
+            double a, b, h;
+
+            cout << "Введите два основания и высоту: ";
+            cin >> a >> b >> h;
+
+            Calculator::TrapezoidArea(a, b, h);
+            break;
+        }
+
+        case 4:
+        {
+            double first, second, third;
+
+            cout << "Введите три стороны треугольника: ";
+            cin >> first >> second >> third;
+
+            Calculator::TriangleArea(first, second, third);
+            break;
+        }
+
+        case 5:
+        {
+            double base, height;
+
+            cout << "Введите основание и высоту: ";
+            cin >> base >> height;
+
+            Calculator::TriangleArea(base, height);
+            break;
+        }
+
+        case 6:
+        {
+            int num;
+
+            cout << "Введите число: ";
+            cin >> num;
+
+            Calculator::Factorial(num);
+            break;
+        }
+
+        case 0:
+            cout << "Выход из программы." << endl;
+            break;
+
+        default:
+            cout << "Некорректный номер действия." << endl;
+            break;
+        }
+    }
 
     return 0;
 }
